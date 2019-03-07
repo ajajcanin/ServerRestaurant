@@ -3,6 +3,7 @@ package com.example.restaurants.Entity;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="reservations")
@@ -17,10 +18,10 @@ public class Reservation {
     private int guests;
 
     @Column(name="time_from", nullable=false)
-    private Time time_from;
+    private Timestamp time_from;
 
     @Column(name="time_to", nullable=false)
-    private Time time_to;
+    private Timestamp time_to;
 
     @ManyToOne
     @JoinColumn(name="table_id")
@@ -32,7 +33,7 @@ public class Reservation {
 
     public Reservation(){}
 
-    public Reservation(int guests, Time time_from, Time time_to) {
+    public Reservation(int guests, Timestamp time_from, Timestamp time_to) {
         this.guests = guests;
         this.time_from = time_from;
         this.time_to = time_to;
@@ -50,19 +51,19 @@ public class Reservation {
         this.guests = guests;
     }
 
-    public Time getTime_from() {
+    public Timestamp getTime_from() {
         return time_from;
     }
 
-    public void setTime_from(Time time_from) {
+    public void setTime_from(Timestamp time_from) {
         this.time_from = time_from;
     }
 
-    public Time getTime_to() {
+    public Timestamp getTime_to() {
         return time_to;
     }
 
-    public void setTime_to(Time time_to) {
+    public void setTime_to(Timestamp time_to) {
         this.time_to = time_to;
     }
 

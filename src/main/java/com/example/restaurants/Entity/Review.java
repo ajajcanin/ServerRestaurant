@@ -16,7 +16,7 @@ public class Review {
     private String review;
 
     @Column(name="grade")
-    private String grade;
+    private double grade;
 
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -28,7 +28,7 @@ public class Review {
 
     public Review(){}
 
-    public Review(String review, String grade) {
+    public Review(String review, double grade) {
         this.review = review;
         this.grade = grade;
     }
@@ -45,11 +45,11 @@ public class Review {
         this.review = review;
     }
 
-    public String getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 
