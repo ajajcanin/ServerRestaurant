@@ -11,5 +11,7 @@ public class SecurityConstants {
     public static final String USER_URL = "/app/user";
     public static final String COUNTRIES = "/app/countries";
     public static final String CITIES = "/app/cities";
+    public static final String SEARCH = "/app/search";
+    public static final String RESTAURANTS_BY_FILTER = "/app/getRestaurantsByFilter";
 
 }

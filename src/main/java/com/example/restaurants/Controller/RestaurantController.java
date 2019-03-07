@@ -5,10 +5,12 @@ import com.example.restaurants.Entity.Restaurant;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -28,15 +30,33 @@ public class RestaurantController {
         JsonNode json = mapper.readTree(name);
 
         List<Restaurant> restaurants = restaurantDAO.getRestuarant(json);
-
         return restaurants;
     }
     @CrossOrigin
     @RequestMapping("/random")
-    public List<Restaurant> randomRestaurants() throws IOException {
+    public JsonNode randomRestaurants() throws IOException {
 
-        List<Restaurant> restaurants = restaurantDAO.getRandRestaurant();
+        JsonNode restaurants = restaurantDAO.getRandRestaurant();
 
         return restaurants;
     }
+    @CrossOrigin
+    @RequestMapping("/getRestaurantsByFilter")
+    public JsonNode getSearchedRestaurants(@RequestBody String req) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(req);
+
+        JsonNode restaurants = restaurantDAO.getSearchedRestaurants(json);
+
+        return restaurants;
+    }
+    @CrossOrigin
+    @RequestMapping("/getExtraDetails")
+    public JsonNode getExtraDetails(@RequestBody Long id) throws IOException{
+
+        JsonNode restaurants = restaurantDAO.getExtraDetails(id);
+
+        return restaurants;
+    }
+
 }
