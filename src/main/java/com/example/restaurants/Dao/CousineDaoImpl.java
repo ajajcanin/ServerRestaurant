@@ -20,9 +20,8 @@ public class CousineDaoImpl implements CousineDao {
     }
     @Override
     @Transactional
-    public ResponseEntity<?> getAllCousines() {
+    public List<Cousine> getAllCousines() {
         Query theQuery = entityManager.createQuery("from Cousine ", Cousine.class);
-        List<Cousine> cousines = theQuery.getResultList();
-        return new ResponseEntity<List>(cousines, HttpStatus.OK);
+        return theQuery.getResultList();
     }
 }
