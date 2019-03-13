@@ -19,7 +19,6 @@ public class CousineDaoImpl implements CousineDao {
         this.entityManager = entityManager;
     }
     @Override
-    @Transactional
     public List<Cousine> getAllCousines() {
         Query theQuery = entityManager.createQuery("from Cousine", Cousine.class);
         return theQuery.getResultList();
