@@ -20,6 +20,8 @@ public class Cousine {
         this.name = name;
     }
 
+    public Cousine(){}
+
     public long getId() {
         return id;
     }
