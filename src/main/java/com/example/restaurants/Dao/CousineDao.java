@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CousineDao {
-    ResponseEntity getAllCousines();
+    ResponseEntity<?> getAllCousines();
 }
