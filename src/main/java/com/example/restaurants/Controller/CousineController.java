@@ -24,6 +24,7 @@ public class CousineController {
     @CrossOrigin
     @RequestMapping("/cousines")
     public List<Cousine> getCousines() throws IOException {
-        return cousineDao.getAllCousines();
+        List<Cousine> cousines = cousineDao.getAllCousines();
+        return cousines;
     }
 }
