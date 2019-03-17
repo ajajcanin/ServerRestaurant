@@ -146,7 +146,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
                     "where c1.cousine_id = rc1.cousine_id and c1.name like :name)) ";
 
         if(!priceFilter.isEmpty())
-            sql+="and round(r.priceRange) = :price ";
+            sql+="and round(r.price_range) = :price ";
 
 
         if(!ratingFilter.isEmpty())
@@ -168,9 +168,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
         if(!name.isEmpty())
             theQuery.setParameter("name", name+'%');
         if(!priceFilter.isEmpty())
-            theQuery.setParameter("price", priceFilter);
+            theQuery.setParameter("price", Double.parseDouble(priceFilter));
         if(!ratingFilter.isEmpty())
-            theQuery.setParameter("rating", ratingFilter);
+            theQuery.setParameter("rating", Double.parseDouble(ratingFilter));
         if(!cousineFilter.isEmpty())
             theQuery.setParameter("cousine", cousineFilter);
             queryCount.setParameter("name", name+'%');
