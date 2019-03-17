@@ -175,7 +175,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
             theQuery.setParameter("rating", Double.parseDouble(ratingFilter));
         if(!cousineFilter.isEmpty()) {
             theQuery.setParameter("cousine", cousineFilter);
-            theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ","));
+            theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ",")+1);
         }
             queryCount.setParameter("name", name+'%');
         theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
