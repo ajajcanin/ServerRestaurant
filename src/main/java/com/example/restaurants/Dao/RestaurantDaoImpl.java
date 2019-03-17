@@ -159,7 +159,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
             sql+="and :cousineNum <= (select count(*) " +
                     "from restaurant_cousine rc1 " +
                     "where rc1.restaurant_id = r.restaurant_id " +
-                    "and tc1.cousine_id in (:cousine)";
+                    "and rc1.cousine_id in (:cousine)";
 
 
         sql += "group by 1 order by 1 ";
