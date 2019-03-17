@@ -105,6 +105,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
     public JsonNode getSearchedRestaurants(JsonNode json) {
         int itemsPerPage = json.get("itemsPerPage").asInt();
         int pageNumber = (json.get("pageNumber").asInt()-1)*itemsPerPage;
+        String name = json.get("searchText").asText();
+        String priceFilter = json.get("filterPrice").asText();
+        String ratingFilter = json.get("filterRating").asText();
+        String cousineFilter = json.get("filterCousine").asText();
 
         String sqlCount = "select count(distinct r.restaurant_id)" +
                 "from cities c,  restaurants r "+
@@ -131,18 +135,40 @@ public class RestaurantDaoImpl implements RestaurantDao {
         "left join restaurant_cousine rc "+
         "on r.restaurant_id = rc.restaurant_id "+
         "left join cousines cou "+
-        "on rc.cousine_id = cou.cousine_id "+
+        "on rc.cousine_id = cou.cousine_id " +
 
-        "where r.city_id = c.city_id and (r.name like :name or c.city like :name or "+
-        "r.restaurant_id in (SELECT rc1.restaurant_id "+
-                            "from restaurant_cousine rc1, cousines c1 "+
-                            "where c1.cousine_id = rc1.cousine_id and c1.name like :name)) "+
-        "group by 1 order by 1 ";
+        "where r.city_id = c.city_id ";
+
+        if(!name.isEmpty())
+            sql +=  "and (r.name like :name or c.city like :name or "+
+                    "r.restaurant_id in (SELECT rc1.restaurant_id "+
+                    "from restaurant_cousine rc1, cousines c1 "+
+                    "where c1.cousine_id = rc1.cousine_id and c1.name like :name)) ";
+
+        if(!priceFilter.isEmpty())
+            sql+="and round(r.priceRange) = :price ";
+
+
+        if(!ratingFilter.isEmpty())
+            sql+="and :rating = (select round(avg(rev1.grade)) " +
+                    "from reviews rev1 " +
+                    "where rev1.restaurant_id = r.restaurant_id) ";
+
+        if(!cousineFilter.isEmpty())
+            sql+="and not exists (select * from restaurant_cousine rc1 " +
+                    "where rc1.restaurant_id = r.restaurant_id " +
+                    "and tc1.cousine_id not in (:cousine)";
+
+
+        sql += "group by 1 order by 1 ";
 
         Query theQuery = entityManager.createNativeQuery(sql);
         Query queryCount = entityManager.createNativeQuery(sqlCount);
-        theQuery.setParameter("name", json.get("searchText").asText()+'%');
-        queryCount.setParameter("name", json.get("searchText").asText()+'%');
+        theQuery.setParameter("name", name+'%');
+        theQuery.setParameter("price", priceFilter);
+        theQuery.setParameter("rating", ratingFilter);
+        theQuery.setParameter("cousine", cousineFilter);
+        queryCount.setParameter("name", name+'%');
         theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
         theQuery.setMaxResults(itemsPerPage);   //9
         List<Object []> restaurants = theQuery.getResultList();
