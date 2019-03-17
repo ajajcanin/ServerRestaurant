@@ -164,11 +164,17 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
         Query theQuery = entityManager.createNativeQuery(sql);
         Query queryCount = entityManager.createNativeQuery(sqlCount);
-        theQuery.setParameter("name", name+'%');
-        theQuery.setParameter("price", priceFilter);
-        theQuery.setParameter("rating", ratingFilter);
-        theQuery.setParameter("cousine", cousineFilter);
-        queryCount.setParameter("name", name+'%');
+
+        if(!name.isEmpty())
+            theQuery.setParameter("name", name+'%');
+        if(!priceFilter.isEmpty())
+            theQuery.setParameter("price", priceFilter);
+        if(!ratingFilter.isEmpty())
+            theQuery.setParameter("rating", ratingFilter);
+        if(!cousineFilter.isEmpty())
+            theQuery.setParameter("cousine", cousineFilter);
+        if(!name.isEmpty())
+            queryCount.setParameter("name", name+'%');
         theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
         theQuery.setMaxResults(itemsPerPage);   //9
         List<Object []> restaurants = theQuery.getResultList();
