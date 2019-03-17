@@ -159,7 +159,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
             sql+="and 1 <= (select count(*) " +
                     "from restaurant_cousine rc1 " +
                     "where rc1.restaurant_id = r.restaurant_id " +
-                    "and rc1.cousine_id in (:cousine)) ";
+                    "and rc1.cousine_id in (1)) ";
 
 
         sql += "group by 1 order by 1 ";
@@ -174,7 +174,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
         if(!ratingFilter.isEmpty())
             theQuery.setParameter("rating", Double.parseDouble(ratingFilter));
         if(!cousineFilter.isEmpty()) {
-            theQuery.setParameter("cousine", cousineFilter);
+            //theQuery.setParameter("cousine", cousineFilter);
            // theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ",")+1);
         }
             queryCount.setParameter("name", name+'%');
