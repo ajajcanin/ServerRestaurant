@@ -156,7 +156,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
                     "where rev1.restaurant_id = r.restaurant_id) ";
 
         if(!cousineFilter.isEmpty())
-            sql+="and :cousineNum <= (select count(*) " +
+            sql+="and 1 <= (select count(*) " +
                     "from restaurant_cousine rc1 " +
                     "where rc1.restaurant_id = r.restaurant_id " +
                     "and rc1.cousine_id in (:cousine)) ";
@@ -175,7 +175,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
             theQuery.setParameter("rating", Double.parseDouble(ratingFilter));
         if(!cousineFilter.isEmpty()) {
             theQuery.setParameter("cousine", cousineFilter);
-            theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ",")+1);
+           // theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ",")+1);
         }
             queryCount.setParameter("name", name+'%');
         theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
