@@ -17,7 +17,7 @@ public class Restaurant {
     private String name;
 
     @Column(name="price_range", nullable=false)
-    private String priceRange;
+    private double priceRange;
 
     @Column(name="description", length = 750)
     private String description;
@@ -74,7 +74,7 @@ public class Restaurant {
     private List<Cousine> cousines;
 
     public Restaurant(){}
-    public Restaurant(String name, String priceRange, String description) {
+    public Restaurant(String name, double priceRange, String description) {
         this.name = name;
         this.priceRange = priceRange;
         this.description = description;
@@ -88,11 +88,11 @@ public class Restaurant {
         this.name = name;
     }
 
-    public String getPriceRange() {
+    public double getPriceRange() {
         return priceRange;
     }
 
-    public void setPriceRange(String priceRange) {
+    public void setPriceRange(double priceRange) {
         this.priceRange = priceRange;
     }
 
