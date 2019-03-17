@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -155,9 +156,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
                     "where rev1.restaurant_id = r.restaurant_id) ";
 
         if(!cousineFilter.isEmpty())
-            sql+="and not exists (select * from restaurant_cousine rc1 " +
+            sql+="and :cousineNum <= (select count(*) " +
+                    "from restaurant_cousine rc1 " +
                     "where rc1.restaurant_id = r.restaurant_id " +
-                    "and tc1.cousine_id not in (:cousine)";
+                    "and tc1.cousine_id in (:cousine)";
 
 
         sql += "group by 1 order by 1 ";
@@ -171,8 +173,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
             theQuery.setParameter("price", Double.parseDouble(priceFilter));
         if(!ratingFilter.isEmpty())
             theQuery.setParameter("rating", Double.parseDouble(ratingFilter));
-        if(!cousineFilter.isEmpty())
+        if(!cousineFilter.isEmpty()) {
             theQuery.setParameter("cousine", cousineFilter);
+            theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ",")+1);
+        }
             queryCount.setParameter("name", name+'%');
         theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
         theQuery.setMaxResults(itemsPerPage);   //9
