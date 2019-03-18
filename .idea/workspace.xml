@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c58d9db7-ec69-4bc3-9eae-e1feeea7b559" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" afterDir="false" />
-    </list>
+    <list default="true" id="c58d9db7-ec69-4bc3-9eae-e1feeea7b559" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1139">
-              <caret line="125" column="74" lean-forward="true" selection-start-line="125" selection-start-column="74" selection-end-line="125" selection-end-column="74" />
+              <caret line="125" column="74" selection-start-line="125" selection-start-column="74" selection-end-line="125" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -108,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReviewDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="146">
-              <caret line="21" column="70" lean-forward="true" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+              <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -232,7 +229,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="37" />
     <option name="y" value="39" />
     <option name="width" value="1346" />
@@ -310,7 +307,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552930799675" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552941767593" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ClientRestaurant/ClientRestaurant" />
@@ -385,7 +382,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="498217000" />
+    <option name="totallyTimeSpent" value="498933000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -782,7 +779,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1139">
-          <caret line="125" column="74" lean-forward="true" selection-start-line="125" selection-start-column="74" selection-end-line="125" selection-end-column="74" />
+          <caret line="125" column="74" selection-start-line="125" selection-start-column="74" selection-end-line="125" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -816,7 +813,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReviewDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
-          <caret line="21" column="70" lean-forward="true" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
+          <caret line="21" column="70" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
