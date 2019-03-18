@@ -146,24 +146,6 @@
               <item name="ServerRestaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="ServerRestaurant" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ServerRestaurant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerRestaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ServerRestaurant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerRestaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ServerRestaurant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ServerRestaurant" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -178,7 +160,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552880072102" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552881207763" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ClientRestaurant/ClientRestaurant" />
@@ -253,7 +235,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="492067000" />
+    <option name="totallyTimeSpent" value="493141000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -267,7 +249,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.739011" visible="true" weight="0.2118003" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.739011" visible="true" weight="0.2118003" />
       <window_info id="Structure" order="1" sideWeight="0.260989" side_tool="true" visible="true" weight="0.2118003" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -278,7 +260,7 @@
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4408602" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4408602" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
