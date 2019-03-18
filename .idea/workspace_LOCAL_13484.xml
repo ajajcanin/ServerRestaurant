@@ -34,7 +34,6 @@
     <select />
   </component>
   <component name="FileEditorManager">
-<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java">
@@ -139,9 +138,6 @@
         </entry>
       </file>
     </leaf>
-=======
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
->>>>>>> d46b21f194fdf8a16c249c7a01f3c3ef4ce408c1
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -253,7 +249,6 @@
               <item name="ServerRestaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="ServerRestaurant" type="462c0819:PsiDirectoryNode" />
             </path>
-<<<<<<< HEAD
             <path>
               <item name="ServerRestaurant" type="b2602c69:ProjectViewProjectNode" />
               <item name="ServerRestaurant" type="462c0819:PsiDirectoryNode" />
@@ -298,8 +293,6 @@
               <item name="restaurants" type="462c0819:PsiDirectoryNode" />
               <item name="Dao" type="462c0819:PsiDirectoryNode" />
             </path>
-=======
->>>>>>> d46b21f194fdf8a16c249c7a01f3c3ef4ce408c1
           </expand>
           <select />
         </subPane>
@@ -314,11 +307,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552941767593" />
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552881207763" />
->>>>>>> d46b21f194fdf8a16c249c7a01f3c3ef4ce408c1
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ClientRestaurant/ClientRestaurant" />
@@ -393,11 +382,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
     <option name="totallyTimeSpent" value="498933000" />
-=======
-    <option name="totallyTimeSpent" value="493141000" />
->>>>>>> d46b21f194fdf8a16c249c7a01f3c3ef4ce408c1
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,8 +395,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.739011" visible="true" weight="0.2118003" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.739011" visible="true" weight="0.2118003" />
       <window_info id="Structure" order="1" sideWeight="0.260989" side_tool="true" visible="true" weight="0.2118003" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -422,7 +408,7 @@
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4408602" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4408602" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -493,21 +479,65 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Meal.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Category.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Meal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/MySpringMvcDispatcherServletInitializer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityWebApplicationInitializer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SpringSecurityInitializer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecSecurityConfig.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/City.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/countries" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/User.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2721#2722#0" expanded="true" />
+            <element signature="e#2753#2754#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/users" />
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/cities" />
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/meals" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/UserController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/reviews" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Reservation.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Reservation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/cousines" />
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/restaurant_cousine" />
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/restaurants" />
@@ -519,7 +549,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/ReservationController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/ReservationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="32" column="87" selection-start-line="32" selection-start-column="87" selection-end-line="32" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -529,7 +568,6 @@
     </entry>
     <entry file="das://c3342922-bc35-4777-8fbd-efec775d01db/database/postgres/schema/public/table/reservations" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Review.java" />
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/UserDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -782,35 +820,6 @@
         </state>
       </provider>
     </entry>
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/ReviewController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReviewDaoImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/UserDaoImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReviewDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/LocationController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Country.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/UserDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDaoImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Cousine.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/RestaurantController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReservationDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Restaurant.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Review.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReservationDaoImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDaoImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/UserDetailsServiceImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/RestaurantsApplication.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/JWTAuthorizationFilter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/JWTAuthenticationFilter.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java" />
->>>>>>> d46b21f194fdf8a16c249c7a01f3c3ef4ce408c1
   </component>
   <component name="masterDetails">
     <states>
