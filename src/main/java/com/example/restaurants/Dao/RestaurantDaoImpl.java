@@ -17,10 +17,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Repository
 public class RestaurantDaoImpl implements RestaurantDao {
@@ -110,8 +109,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
         String priceFilter = json.get("filterPrice").asText();
         String ratingFilter = json.get("filterRating").asText();
         String cousineFilter = json.get("filterCousine").asText();
-
-        String sqlCount = "select count(distinct r.restaurant_id)" +
+        System.out.println("again??");
+        System.out.println("TEST + " + cousineFilter);
+        String sqlCount = "select count(distinct r.restaurant_id) " +
                 "from cities c,  restaurants r "+
                 "left join restaurant_cousine rc "+
                 "on r.restaurant_id = rc.restaurant_id "+
@@ -156,10 +156,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
                     "where rev1.restaurant_id = r.restaurant_id) ";
 
         if(!cousineFilter.isEmpty())
-            sql+="and 1 <= (select count(*) " +
+            sql+="and :cousineNum <= (select count(*) " +
                     "from restaurant_cousine rc1 " +
                     "where rc1.restaurant_id = r.restaurant_id " +
-                    "and rc1.cousine_id in (1)) ";
+                    "and cast(rc1.cousine_id as varchar) in (:cousine)) ";
 
 
         sql += "group by 1 order by 1 ";
@@ -174,8 +174,11 @@ public class RestaurantDaoImpl implements RestaurantDao {
         if(!ratingFilter.isEmpty())
             theQuery.setParameter("rating", Double.parseDouble(ratingFilter));
         if(!cousineFilter.isEmpty()) {
-            //theQuery.setParameter("cousine", cousineFilter);
-           // theQuery.setParameter("cousineNum", StringUtils.countOccurrencesOf(cousineFilter, ",")+1);
+            List<String> tempFilter = Arrays.asList(cousineFilter.split(","));
+            theQuery.setParameter("cousine", tempFilter);
+            int elements = StringUtils.countOccurrencesOf(cousineFilter, ",")+1;
+            theQuery.setParameter("cousineNum", elements);
+            System.out.println("test za broj: "  + elements);
         }
             queryCount.setParameter("name", name+'%');
         theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
