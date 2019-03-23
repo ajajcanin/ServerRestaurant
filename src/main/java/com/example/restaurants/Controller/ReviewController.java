@@ -23,10 +23,11 @@ public class ReviewController {
 
     @CrossOrigin
     @RequestMapping("/insertComment")
-    public void insertComment(@RequestBody String req) throws IOException {
+    public JsonNode insertComment(@RequestBody String req) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode json = mapper.readTree(req);
         System.out.println("-----------------------------" + json);
-        reviewDao.insertComment(json);
+        return reviewDao.insertComment(json);
     }
+
 }

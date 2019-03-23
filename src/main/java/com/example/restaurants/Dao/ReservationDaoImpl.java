@@ -94,7 +94,7 @@ public class ReservationDaoImpl implements ReservationDao {
                 "from reservations r " +
                 "where t.table_id = r.table_id " +
                 "and :dateTime >= r.time_from and :dateTime <= r.time_to) ";
-
+ 
             Query query = entityManager.createNativeQuery(sql);
             query.setParameter("dateTime", timestamp);
             query.setParameter("guests", guests);

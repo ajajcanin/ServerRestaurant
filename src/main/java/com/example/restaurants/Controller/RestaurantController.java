@@ -58,5 +58,4 @@ public class RestaurantController {
 
         return restaurants;
     }
-
 }
