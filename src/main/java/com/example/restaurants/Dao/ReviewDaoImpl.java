@@ -23,16 +23,18 @@ public class ReviewDaoImpl implements ReviewDao {
     @Transactional
     public JsonNode insertComment(JsonNode json) {
         String sqlId = "select u.user_id from users u where u.email_address LIKE :email";
-        String sql = "update reviews SET grade = :mark, review = :comment " +
-                "where restaurant_id = :idRestaurant and user_id = :idUser ; " +
+        String sql =
                 "insert into reviews(grade, review, restaurant_id, user_id) " +
-                "values (:mark, :comment, :idRestaurant, :idUser) " +
-                "where not exists (select * from reviews where restaurant_id = :idRestaurant and user_id = :idUser) ";
+                "values (:mark, :comment, :idRestaurant, :idUser) ";
         System.out.println(json);
         Query queryUserId = entityManager.createNativeQuery(sqlId);
         queryUserId.setParameter("email", json.get("emailUser").asText());
         BigInteger id = (BigInteger) queryUserId.getSingleResult();
+/*"update reviews SET grade = :mark, review = :comment " +
+                "where restaurant_id = :idRestaurant and user_id = :idUser ; " +
 
+                " +
+                "where not exists (select * from reviews where restaurant_id = :idRestaurant and user_id = :idUser) */
         Query query = entityManager.createNativeQuery(sql);
         query.setParameter("mark", json.get("mark").asDouble());
         query.setParameter("idRestaurant", json.get("idRestaurant").asLong());

@@ -15,10 +15,7 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class ReservationDaoImpl implements ReservationDao {
@@ -93,8 +90,8 @@ public class ReservationDaoImpl implements ReservationDao {
                 "and not exists(select r.reservation_id " +
                 "from reservations r " +
                 "where t.table_id = r.table_id " +
-                "and :dateTime >= r.time_from and :dateTime <= r.time_to) ";
- 
+                "and tsrange(r.time_from, r.time_to, '[]') && tsrange(:dateTime, :dateTimeEnd, '[]') ";
+
             Query query = entityManager.createNativeQuery(sql);
             query.setParameter("dateTime", timestamp);
             query.setParameter("guests", guests);
@@ -129,45 +126,60 @@ public class ReservationDaoImpl implements ReservationDao {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     @Transactional
     public int getNumTables(Timestamp timestamp, List<String> bestTime, int people, long idRestaurant, boolean hit, boolean closeHit){
-        String sql = "select count(t.table_id) " +
+        String sql = "select t.table_id, t.capacity " +
                 "from tables t " +
-                "where t.capacity = :people " +
-                "and t.restaurant_id = :idRestaurant " +
+                "where t.restaurant_id = :idRestaurant " +
                 "and not exists(select r.reservation_id " +
                 "from reservations r " +
                 "where t.table_id = r.table_id " +
-                "and :dateTime >= r.time_from and :dateTime <= r.time_to) ";
+                "and tsrange(r.time_from, r.time_to, '[]') && tsrange(:dateTime, :dateTimeEnd, '[]')) ";
+
+        String sqlStay = "select rs.stay " +
+                "from restaurant_stays rs " +
+                "where rs.restaurant_id = :idRestaurant " +
+                "and rs.meal_stay_id = (select ms.meal_stay_id" +
+                                "from meal_stays ms" +
+                                "where ms.start::time <= :dateTime::time " +
+                                "and ms.end::time >= :dateTime::time) ";
+
+        Query queryStay = entityManager.createNativeQuery(sqlStay);
+        queryStay.setParameter("dateTime", timestamp);
+        queryStay.setParameter("idRestaurant", idRestaurant);
+
+        int mealType;
+        List<Integer> stays = queryStay.getResultList();
+        if(stays.isEmpty()) mealType = 1;
+        else mealType = stays.get(0);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(timestamp);
+        cal.add(Calendar.HOUR, mealType);
+        Timestamp timestampEnd = new Timestamp(cal.getTime().getTime());
 
         Query query = entityManager.createNativeQuery(sql);
         query.setParameter("people", people);
         query.setParameter("dateTime", timestamp);
         query.setParameter("idRestaurant", idRestaurant);
+        query.setParameter("dateTimeEnd", timestampEnd);
 
-        BigInteger tableNum = (BigInteger) query.getSingleResult();
-        System.out.println("broj stolova:" + tableNum);
-        if(tableNum.intValue() > 0 && (hit || closeHit)){
+        LinkedHashMap<BigInteger, Integer> tables = new LinkedHashMap<>();
+        List<Object[]> tableObjects = query.getResultList();
+        for(Object[] result : tableObjects){
+            tables.put((BigInteger) result[0], (Integer) result[1]);
+        }
+        System.out.println("broj stolova:" + tables.size());
+        int tableNum = tables.size();
+        if(tableNum > 0 && (hit || closeHit)){
             bestTime.add(timestamp.toString().substring(11,16));
-            return tableNum.intValue();
-        } else if(tableNum.intValue() > 0){
+            return tableNum;
+        } else if(tableNum > 0){
             bestTime.add(timestamp.toString().substring(11,16));
             IncreaseTimeByThirtyMinutes(timestamp);
-            return tableNum.intValue()+getNumTables(timestamp, bestTime, people, idRestaurant, hit, true);
+            return tableNum+getNumTables(timestamp, bestTime, people, idRestaurant, hit, true);
         } else {
             IncreaseTimeByThirtyMinutes(timestamp);
-            return tableNum.intValue()+getNumTables(timestamp, bestTime, people, idRestaurant, false, closeHit);
+            return tableNum+getNumTables(timestamp, bestTime, people, idRestaurant, false, closeHit);
         }
     }
 
@@ -176,5 +188,26 @@ public class ReservationDaoImpl implements ReservationDao {
         cal.setTime(timestamp);
         cal.add(Calendar.MINUTE, 30);
         timestamp.setTime(cal.getTime().getTime());
+    }
+
+    private Integer getTablesForReservation(List<BigInteger> tableIds, List<Integer> tableCapacities,
+            List<BigInteger> curTables, List<BigInteger> ret,Integer n, int guests, Integer min){
+        if(n == 0 || guests == 0)
+            return 0;
+        if(tableCapacities.get(n-1) >= guests){
+            if(guests - tableCapacities.get(n-1) > min){
+                min = guests - tableCapacities.get(n-1);
+                List<BigInteger> newTableIds = curTables;
+                newTableIds.add(tableIds.get(n-1));
+                ret = newTableIds;
+            }
+            return getTablesForReservation(tableIds,tableCapacities, curTables, ret, n, guests, min);
+        } else {
+            List<BigInteger> newTableIds = curTables;
+            newTableIds.add(tableIds.get(n-1));
+            return Math.max(tableCapacities.get(n-1) + getTablesForReservation(tableIds,tableCapacities, curTables, ret, n, guests, min),
+                    getTablesForReservation(tableIds,tableCapacities, curTables, ret, n, guests, min));
+        }
+
     }
 }
