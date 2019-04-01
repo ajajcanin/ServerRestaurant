@@ -88,7 +88,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
             JsonNode childNode = mapper.createObjectNode();
             ((ObjectNode) childNode).put("id", (BigInteger) child[0]);
             ((ObjectNode) childNode).put("restaurantName", (String) child[2]);
-            ((ObjectNode) childNode).put("priceRange", (String) child[3]);
+            ((ObjectNode) childNode).put("priceRange", (Double) child[3]);
             ((ObjectNode) childNode).put("imageFileName", (String) child[1]);
             ((ObjectNode) childNode).put("foodType", (String) child[4]);
             ((ObjectNode) childNode).put("mark", (Double) child[5]);
