@@ -28,6 +28,12 @@ public class Restaurant {
     @Column(name="cover")
     private String cover;
 
+    @Column(name="longitude")
+    private double longitude;
+
+    @Column(name="latitude")
+    private double latitude;
+
     @ManyToMany
     @JoinTable(
             name="restaurant_category",
@@ -102,6 +108,38 @@ public class Restaurant {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public List<Cousine> getCousines() {
+        return cousines;
+    }
+
+    public void setCousines(List<Cousine> cousines) {
+        this.cousines = cousines;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     @Override

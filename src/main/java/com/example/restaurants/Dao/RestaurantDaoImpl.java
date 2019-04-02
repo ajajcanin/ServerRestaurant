@@ -211,14 +211,19 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
     @Override
     @Transactional
-    public JsonNode getExtraDetails(Long id) {
+    public Restaurant getExtraDetails(Long id) {
         String sql = "select r from Restaurant r where r.id = :id";
         Query theQuery = entityManager.createQuery(sql, Restaurant.class);
         theQuery.setParameter("id", id);
-        Restaurant r = (Restaurant) theQuery.getSingleResult();
+        return (Restaurant) theQuery.getSingleResult();
+        /*Restaurant r = (Restaurant) theQuery.getSingleResult();
         ObjectMapper mapper = new ObjectMapper();
         JsonNode res = mapper.createObjectNode();
         ((ObjectNode) res).put("description", r.getDescription());
-        return res;
+        ((ObjectNode) res).put("cover", r.getCover());
+        ((ObjectNode) res).put("longitude", r.getLongitude());
+        ((ObjectNode) res).put("latitude", r.getLatitude());
+        ((ArrayNode) res).put("cousineList", r.getCousines());
+        return res;*/
     }
 }

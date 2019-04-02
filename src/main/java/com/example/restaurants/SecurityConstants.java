@@ -15,5 +15,7 @@ public class SecurityConstants {
     public static final String RESTAURANTS_BY_FILTER = "/app/getRestaurantsByFilter";
     public static final String COUSINES = "/app/cousines";
     public static final String ADD_REVIEW = "/app/insertComment";
+    public static final String CITIES_PAGINATION = "/app/citiesPagination";
+    public static final String EXTRAS = "/app/getExtraDetails";
 
 }

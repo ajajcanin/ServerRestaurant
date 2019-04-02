@@ -62,4 +62,46 @@ public class LocationDaoImpl implements LocationDao{
         theQuery.setParameter("locationId", json.get("countryId").asLong());
         return theQuery.getResultList();
     }
+    @Override
+    public JsonNode getCitiesPagination(JsonNode json){
+        int itemsPerPage = json.get("itemsPerPage").asInt();
+        int pageNumber = (json.get("pageNumber").asInt()-1)*itemsPerPage;
+        String name = json.get("searchText").asText();
+        String sqlCount = "select count(distinct c.city_id) " +
+                "from cities c "+
+                "where c.city like :name ";
+
+
+        String sql = "select c.city_id, c.city, cou.name "+
+                "from cities c, countries cou "+
+                "where c.city like :name " +
+                "and c.country_id = cou.country_id";
+
+        Query theQuery = entityManager.createNativeQuery(sql);
+        Query queryCount = entityManager.createNativeQuery(sqlCount);
+
+        theQuery.setParameter("name", name+'%');
+        queryCount.setParameter("name", name+'%');
+        theQuery.setFirstResult(pageNumber);    //9*n (n€N0)
+        theQuery.setMaxResults(itemsPerPage);   //9
+        List<Object []> locations = theQuery.getResultList();
+        BigInteger total = (BigInteger) queryCount.getSingleResult();
+        int numberOfRestaurantPages = (int)Math.ceil(total.doubleValue()/itemsPerPage);
+
+        ObjectMapper mapper = new ObjectMapper();
+        ArrayNode array = mapper.createArrayNode();
+        locations.forEach(child -> {
+            JsonNode childNode = mapper.createObjectNode();
+            ((ObjectNode) childNode).put("id", (BigInteger) child[0]);
+            ((ObjectNode) childNode).put("city", (String) child[1]);
+            ((ObjectNode) childNode).put("country", (String) child[2]);
+            array.add(childNode);
+        });
+        JsonNode res = mapper.createObjectNode();
+        ((ObjectNode) res).putPOJO("locations", array);
+        ((ObjectNode) res).put("numberOfRestaurantPages", numberOfRestaurantPages);
+        ((ObjectNode) res).put("totalItems", total);
+
+        return res;
+    }
 }

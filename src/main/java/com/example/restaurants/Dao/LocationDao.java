@@ -14,4 +14,5 @@ public interface LocationDao {
 
     List<Country> getCountries();
     List<City> getCities(JsonNode json);
+    JsonNode getCitiesPagination(JsonNode json);
 }
