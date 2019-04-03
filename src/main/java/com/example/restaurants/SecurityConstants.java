@@ -16,6 +16,7 @@ public class SecurityConstants {
     public static final String COUSINES = "/app/cousines";
     public static final String ADD_REVIEW = "/app/insertComment";
     public static final String CITIES_PAGINATION = "/app/citiesPagination";
+    public static final String COUSINES_PAGINATION = "/app/cousinesPagination";
     public static final String EXTRAS = "/app/getExtraDetails";
 
 }

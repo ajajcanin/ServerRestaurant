@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c58d9db7-ec69-4bc3-9eae-e1feeea7b559" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,15 +40,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReviewDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="251">
@@ -82,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="571">
@@ -91,11 +80,29 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="30" column="103" selection-start-line="30" selection-start-column="103" selection-end-line="30" selection-end-column="103" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            <state relative-caret-position="163">
+              <caret line="33" column="40" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -114,34 +121,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
               <caret line="56" column="8" lean-forward="true" selection-start-line="56" selection-start-column="8" selection-end-line="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Restaurant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="136" column="27" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
-              <folding>
-                <element signature="e#1179#1180#0" expanded="true" />
-                <element signature="e#1215#1216#0" expanded="true" />
-                <element signature="e#2574#2575#0" expanded="true" />
-                <element signature="e#2606#2607#0" expanded="true" />
-                <element signature="e#2656#2657#0" expanded="true" />
-                <element signature="e#2698#2699#0" expanded="true" />
-                <element signature="e#2733#2734#0" expanded="true" />
-                <element signature="e#2764#2765#0" expanded="true" />
-                <element signature="e#2812#2813#0" expanded="true" />
-                <element signature="e#2852#2853#0" expanded="true" />
-                <element signature="e#2894#2895#0" expanded="true" />
-                <element signature="e#2925#2926#0" expanded="true" />
-                <element signature="e#2980#2981#0" expanded="true" />
-                <element signature="e#3020#3021#0" expanded="true" />
-                <element signature="e#3075#3076#0" expanded="true" />
-                <element signature="e#3113#3114#0" expanded="true" />
-                <element signature="e#3145#3146#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -228,14 +207,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/RestaurantController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Restaurant.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/CousineDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" />
       </list>
     </option>
   </component>
@@ -409,12 +388,12 @@
       <workItem from="1553558887456" duration="632000" />
       <workItem from="1553676814558" duration="6831000" />
       <workItem from="1553812722542" duration="15273000" />
-      <workItem from="1554138933938" duration="23203000" />
+      <workItem from="1554138933938" duration="23758000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="575113000" />
+    <option name="totallyTimeSpent" value="575668000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -664,20 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="27" column="66" lean-forward="true" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Entity/Restaurant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -751,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="34" column="42" lean-forward="true" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/LocationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -769,6 +727,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="571">
           <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/CousineController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="33" column="40" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="17" column="75" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="30" column="103" selection-start-line="30" selection-start-column="103" selection-end-line="30" selection-end-column="103" />
         </state>
       </provider>
     </entry>
