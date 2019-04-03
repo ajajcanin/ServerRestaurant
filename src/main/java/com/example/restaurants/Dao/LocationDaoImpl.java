@@ -72,7 +72,7 @@ public class LocationDaoImpl implements LocationDao{
                 "where c.city like :name ";
 
 
-        String sql = "select c.city_id, c.city, cou.name "+
+        String sql = "select c.city_id, c.city, cou.name, cou.id "+
                 "from cities c, countries cou "+
                 "where c.city like :name " +
                 "and c.country_id = cou.country_id";
@@ -95,6 +95,7 @@ public class LocationDaoImpl implements LocationDao{
             ((ObjectNode) childNode).put("id", (BigInteger) child[0]);
             ((ObjectNode) childNode).put("city", (String) child[1]);
             ((ObjectNode) childNode).put("country", (String) child[2]);
+            ((ObjectNode) childNode).put("countryId", (BigInteger) child[3]);
             array.add(childNode);
         });
         JsonNode res = mapper.createObjectNode();
