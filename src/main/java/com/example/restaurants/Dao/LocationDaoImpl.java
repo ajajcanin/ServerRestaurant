@@ -75,7 +75,7 @@ public class LocationDaoImpl implements LocationDao{
                 "where c.city like :name ";
 
 
-        String sql = "select c.city_id, c.city, cou.name, cou.id "+
+        String sql = "select c.city_id, c.city, cou.name, cou.country_id "+
                 "from cities c, countries cou "+
                 "where c.city like :name " +
                 "and c.country_id = cou.country_id";
