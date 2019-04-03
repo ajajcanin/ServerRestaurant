@@ -49,12 +49,14 @@ public class LocationDaoImpl implements LocationDao{
     }
 
     @Override
+    @Transactional
     public List<Country> getCountries() {
         Query theQuery = entityManager.createQuery("from Country",Country.class);
         return theQuery.getResultList();
     }
 
     @Override
+    @Transactional
     public List<City> getCities(JsonNode json) {
         System.out.println(json);
         System.out.println(json.get("countryId"));
@@ -63,6 +65,7 @@ public class LocationDaoImpl implements LocationDao{
         return theQuery.getResultList();
     }
     @Override
+    @Transactional
     public JsonNode getCitiesPagination(JsonNode json){
         int itemsPerPage = json.get("itemsPerPage").asInt();
         int pageNumber = (json.get("pageNumber").asInt()-1)*itemsPerPage;
