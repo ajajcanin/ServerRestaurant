@@ -123,7 +123,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
                 "and cou1.name like :name)) ";
 
 
-        String sql = "select r.restaurant_id, r.name, r.price_range, r.avatar, r.cover "+
+        String sql = "select r.restaurant_id, r.name, r.price_range, r.avatar, r.cover, "+
         "(select avg(rev1.grade) "+
         "from reviews rev1 "+
         "where rev1.restaurant_id = r.restaurant_id), "+
