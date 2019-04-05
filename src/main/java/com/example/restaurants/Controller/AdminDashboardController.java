@@ -25,7 +25,7 @@ public class AdminDashboardController {
     private AdminLocation adminLocation;
     private AdminUser adminUser;
 
-    public AdminDashboardController(AdminCousine adminCousine, AdminLocation adminLocation, AdminUser adminUser) {
+    public AdminDashboardController(AdminRestaurants adminRestaurant, AdminLocation adminLocation, AdminUser adminUser) {
         this.adminRestaurant = adminRestaurant;
         this.adminLocation = adminLocation;
         this.adminUser = adminUser;

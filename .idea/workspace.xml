@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c58d9db7-ec69-4bc3-9eae-e1feeea7b559" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/AdminDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/restaurants/Controller/AdminDashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/restaurants/Controller/AdminDashboardController.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="204" column="8" lean-forward="true" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="49" />
+              <caret line="204" column="8" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -72,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="163">
-              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+              <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -81,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="103" column="49" lean-forward="true" selection-start-line="103" selection-start-column="49" selection-end-line="106" selection-end-column="52" />
+              <caret line="103" column="49" selection-start-line="103" selection-start-column="49" selection-end-line="106" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -89,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/AdminDashboardController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="-72">
+              <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,7 +135,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/AdminLocationController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="59" column="83" lean-forward="true" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="83" />
+              <caret line="59" column="83" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="83" />
             </state>
           </provider>
         </entry>
@@ -330,7 +330,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554479847832" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554480789378" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -408,12 +408,12 @@
       <workItem from="1553812722542" duration="15273000" />
       <workItem from="1554138933938" duration="48321000" />
       <workItem from="1554407567725" duration="14631000" />
-      <workItem from="1554455097744" duration="9054000" />
+      <workItem from="1554455097744" duration="9676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="623916000" />
+    <option name="totallyTimeSpent" value="624538000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -428,7 +428,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7307692" visible="true" weight="0.22692889" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7307692" visible="true" weight="0.22692889" />
       <window_info id="Structure" order="1" sideWeight="0.26923078" side_tool="true" visible="true" weight="0.22692889" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -439,7 +439,7 @@
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4408602" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4408602" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39938557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -772,7 +772,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/AdminLocationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="59" column="83" lean-forward="true" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="83" />
+          <caret line="59" column="83" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="83" />
         </state>
       </provider>
     </entry>
@@ -789,14 +789,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="204" column="8" lean-forward="true" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="49" />
+          <caret line="204" column="8" selection-start-line="204" selection-start-column="8" selection-end-line="204" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/LocationDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="103" column="49" lean-forward="true" selection-start-line="103" selection-start-column="49" selection-end-line="106" selection-end-column="52" />
+          <caret line="103" column="49" selection-start-line="103" selection-start-column="49" selection-end-line="106" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -813,7 +813,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
-          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -843,8 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Controller/AdminDashboardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="25" column="32" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        <state relative-caret-position="-72">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
