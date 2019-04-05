@@ -2,6 +2,7 @@ package com.example.restaurants.Controller;
 
 import com.example.restaurants.Repository.AdminCousine;
 import com.example.restaurants.Repository.AdminLocation;
+import com.example.restaurants.Repository.AdminRestaurants;
 import com.example.restaurants.Repository.AdminUser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,25 +21,25 @@ import java.math.BigInteger;
 @RestController
 @RequestMapping(value = "/app")
 public class AdminDashboardController {
-    private AdminCousine adminCousine;
+    private AdminRestaurants adminRestaurant;
     private AdminLocation adminLocation;
     private AdminUser adminUser;
 
     public AdminDashboardController(AdminCousine adminCousine, AdminLocation adminLocation, AdminUser adminUser) {
-        this.adminCousine = adminCousine;
+        this.adminRestaurant = adminRestaurant;
         this.adminLocation = adminLocation;
         this.adminUser = adminUser;
     }
     @CrossOrigin
     @RequestMapping("/counters")
     public ResponseEntity deleteLocation() throws IOException {
-        Long cCousine = adminCousine.count();
+        Long cRestaurant = adminRestaurant.count();
         Long cLocation = adminLocation.count();
         Long cUser = adminUser.count();
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode res = mapper.createObjectNode();
-        ((ObjectNode) res).put("cousines", cCousine);
+        ((ObjectNode) res).put("restaurants", cRestaurant);
         ((ObjectNode) res).put("locations", cLocation);
         ((ObjectNode) res).put("users", cUser);
         return ResponseEntity.status(200).body(res);
