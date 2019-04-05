@@ -32,7 +32,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                         ADD_RESTAURANT, EDIT_RESTAURANT, DELETE_RESTAURANT,
                         ADD_CATEOGRY, ADD_LOCATION, ADD_USER,
                         EDIT_CATEOGRY, EDIT_LOCATION, EDIT_USER,
-                        DELETE_CATEOGRY, DELETE_LOCATION, DELETE_USER, USERS_PAGINATION).permitAll()
+                        DELETE_CATEOGRY, DELETE_LOCATION, DELETE_USER, USERS_PAGINATION, COUNTERS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
