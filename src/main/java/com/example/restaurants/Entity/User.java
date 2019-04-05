@@ -60,6 +60,7 @@ public class User {
         this.phoneNum = null;
         this.userType = null;
     }
+
     public long getId() {
         return id;
     }
@@ -118,6 +119,10 @@ public class User {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public City getCity() {
+        return city;
     }
 
     public void setCity(City city){

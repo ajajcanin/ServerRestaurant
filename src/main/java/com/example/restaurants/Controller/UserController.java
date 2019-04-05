@@ -45,4 +45,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         return null;
     }
+
+    @RequestMapping("/usersPagination")
+    public JsonNode getUsersPagination(@RequestBody String data) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(data);
+
+        JsonNode users = userDao.getUsersPagination(json);
+
+        return users;
+    }
+
 }
