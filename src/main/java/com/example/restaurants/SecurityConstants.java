@@ -20,6 +20,9 @@ public class SecurityConstants {
     public static final String USERS_PAGINATION = "/app/usersPagination";
     public static final String EXTRAS = "/app/getExtraDetails";
     public static final String COUNTERS = "/app/counters";
+    public static final String IS_ADMIN = "/app/isAdmin";
+
+
     public static final String ADD_RESTAURANT = "/app/addRestaurant";
     public static final String EDIT_RESTAURANT = "/app/editRestaurant";
     public static final String DELETE_RESTAURANT = "/app/deleteRestaurant";
