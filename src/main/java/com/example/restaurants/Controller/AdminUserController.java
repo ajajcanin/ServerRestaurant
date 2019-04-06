@@ -7,6 +7,7 @@ import com.example.restaurants.Repository.AdminLocation;
 import com.example.restaurants.Repository.AdminUser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -102,9 +103,16 @@ public class AdminUserController {
 
     @CrossOrigin
     @RequestMapping("/isAdmin")
-    public boolean isAdmin(@RequestBody String email) throws IOException{
-        User x = adminUser.findByEmail(email);
+    public ResponseEntity isAdmin(@RequestBody String data) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(data);
+        JsonNode res = mapper.createObjectNode();
+        String emailAddress = json.get("email").asText();
+        User x = adminUser.findByEmail(emailAddress);
+        ((ObjectNode) res).put("userType", x.getUserType());
+        return ResponseEntity.status(200).body(res);
+        /*User x = adminUser.findByEmail(email);
         System.out.println(x.getUserType());
-        return x.getUserType().equals("admin");
+        return x.getUserType().equals("admin");*/
     }
 }
