@@ -99,4 +99,12 @@ public class AdminUserController {
         else
             return ResponseEntity.status(400).body("Location does not exist");
     }
+
+    @CrossOrigin
+    @RequestMapping("/isAdmin")
+    public boolean isAdmin(@RequestBody String email) throws IOException{
+        User x = adminUser.findByEmail(email);
+        System.out.println(x.getUserType());
+        return x.getUserType().equals("admin");
+    }
 }

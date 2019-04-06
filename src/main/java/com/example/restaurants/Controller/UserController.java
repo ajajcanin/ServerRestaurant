@@ -23,12 +23,10 @@ import java.io.IOException;
 public class UserController {
 
     private final UserDao userDao;
-    private AdminUser adminUser;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
-    public UserController(UserDao userDao, AdminUser adminUser, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserController(UserDao userDao, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDao = userDao;
-        this.adminUser = adminUser;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -47,10 +45,6 @@ public class UserController {
         if(!userDao.register(user))
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         return null;
-    }
-    @RequestMapping("/isAdmin")
-    public boolean isAdmin(@RequestBody String email) throws IOException{
-        return adminUser.findUserByEmail(email).getUserType().equals("admin");
     }
     @RequestMapping("/usersPagination")
     public JsonNode getUsersPagination(@RequestBody String data) throws IOException{
