@@ -3,6 +3,7 @@ package com.example.restaurants.Controller;
 import com.example.restaurants.Dao.UserDao;
 import com.example.restaurants.Entity.City;
 import com.example.restaurants.Entity.User;
+import com.example.restaurants.Repository.AdminUser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,12 @@ import java.io.IOException;
 public class UserController {
 
     private final UserDao userDao;
+    private AdminUser adminUser;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
-    public UserController(UserDao userDao, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public UserController(UserDao userDao, AdminUser adminUser, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDao = userDao;
+        this.adminUser = adminUser;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -45,7 +48,10 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         return null;
     }
-
+    @RequestMapping("/isAdmin")
+    public boolean isAdmin(@RequestBody String email) throws IOException{
+        return adminUser.findUserByEmail(email).getUserType().equals("admin");
+    }
     @RequestMapping("/usersPagination")
     public JsonNode getUsersPagination(@RequestBody String data) throws IOException{
         ObjectMapper mapper = new ObjectMapper();
