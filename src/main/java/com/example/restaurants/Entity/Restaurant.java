@@ -67,6 +67,9 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Review> reviews;
 
+    @OneToMany(mappedBy = "restaurant")
+    private List<RestaurantStays> restaurantStays;
+
     @ManyToOne
     @JoinColumn(name="city_id")
     private City city;
