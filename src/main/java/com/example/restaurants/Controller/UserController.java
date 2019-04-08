@@ -3,6 +3,7 @@ package com.example.restaurants.Controller;
 import com.example.restaurants.Dao.UserDao;
 import com.example.restaurants.Entity.City;
 import com.example.restaurants.Entity.User;
+import com.example.restaurants.Repository.AdminUser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,14 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         return null;
     }
+    @RequestMapping("/usersPagination")
+    public JsonNode getUsersPagination(@RequestBody String data) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(data);
+
+        JsonNode users = userDao.getUsersPagination(json);
+
+        return users;
+    }
+
 }

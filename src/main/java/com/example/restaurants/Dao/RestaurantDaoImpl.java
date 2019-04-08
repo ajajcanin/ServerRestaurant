@@ -123,7 +123,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
                 "and cou1.name like :name)) ";
 
 
-        String sql = "select r.restaurant_id, r.name, r.price_range, r.avatar, "+
+        String sql = "select r.restaurant_id, r.name, r.price_range, r.avatar, r.cover, "+
         "(select avg(rev1.grade) "+
         "from reviews rev1 "+
         "where rev1.restaurant_id = r.restaurant_id), "+
@@ -196,9 +196,10 @@ public class RestaurantDaoImpl implements RestaurantDao {
             ((ObjectNode) childNode).put("restaurantName", (String) child[1]);
             ((ObjectNode) childNode).put("priceRange", (Double) child[2]);
             ((ObjectNode) childNode).put("imageFileName", (String) child[3]);
-            ((ObjectNode) childNode).put("mark", (Double) child[4]);
-            ((ObjectNode) childNode).put("votes", (BigInteger) child[5]);
-            ((ObjectNode) childNode).put("foodType", (String) child[6]);
+            ((ObjectNode) childNode).put("coverFileName", (String) child[4]);
+            ((ObjectNode) childNode).put("mark", (Double) child[5]);
+            ((ObjectNode) childNode).put("votes", (BigInteger) child[6]);
+            ((ObjectNode) childNode).put("foodType", (String) child[7]);
             array.add(childNode);
         });
         JsonNode res = mapper.createObjectNode();
@@ -211,14 +212,19 @@ public class RestaurantDaoImpl implements RestaurantDao {
 
     @Override
     @Transactional
-    public JsonNode getExtraDetails(Long id) {
+    public Restaurant getExtraDetails(Long id) {
         String sql = "select r from Restaurant r where r.id = :id";
         Query theQuery = entityManager.createQuery(sql, Restaurant.class);
         theQuery.setParameter("id", id);
-        Restaurant r = (Restaurant) theQuery.getSingleResult();
+        return (Restaurant) theQuery.getSingleResult();
+        /*Restaurant r = (Restaurant) theQuery.getSingleResult();
         ObjectMapper mapper = new ObjectMapper();
         JsonNode res = mapper.createObjectNode();
         ((ObjectNode) res).put("description", r.getDescription());
-        return res;
+        ((ObjectNode) res).put("cover", r.getCover());
+        ((ObjectNode) res).put("longitude", r.getLongitude());
+        ((ObjectNode) res).put("latitude", r.getLatitude());
+        ((ArrayNode) res).put("cousineList", r.getCousines());
+        return res;*/
     }
 }

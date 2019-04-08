@@ -15,5 +15,30 @@ public class SecurityConstants {
     public static final String RESTAURANTS_BY_FILTER = "/app/getRestaurantsByFilter";
     public static final String COUSINES = "/app/cousines";
     public static final String ADD_REVIEW = "/app/insertComment";
+    public static final String CITIES_PAGINATION = "/app/citiesPagination";
+    public static final String COUSINES_PAGINATION = "/app/cousinesPagination";
+    public static final String USERS_PAGINATION = "/app/usersPagination";
+    public static final String EXTRAS = "/app/getExtraDetails";
+    public static final String COUNTERS = "/app/counters";
+    public static final String IS_ADMIN = "/app/isAdmin";
+
+
+    public static final String ADD_RESTAURANT = "/app/addRestaurant";
+    public static final String EDIT_RESTAURANT = "/app/editRestaurant";
+    public static final String DELETE_RESTAURANT = "/app/deleteRestaurant";
+
+
+    public static final String ADD_CATEOGRY = "/app/addCategory";
+    public static final String EDIT_CATEOGRY = "/app/editCategory";
+    public static final String DELETE_CATEOGRY = "/app/deleteCategory";
+
+    public static final String ADD_LOCATION = "/app/addLocation";
+    public static final String EDIT_LOCATION = "/app/editLocation";
+    public static final String DELETE_LOCATION = "/app/deleteLocation";
+
+    public static final String ADD_USER = "/app/addUser";
+    public static final String EDIT_USER = "/app/editUser";
+    public static final String DELETE_USER = "/app/deleteUser";
+
 
 }

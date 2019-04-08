@@ -28,6 +28,12 @@ public class Restaurant {
     @Column(name="cover")
     private String cover;
 
+    @Column(name="longitude")
+    private double longitude;
+
+    @Column(name="latitude")
+    private double latitude;
+
     @ManyToMany
     @JoinTable(
             name="restaurant_category",
@@ -61,6 +67,9 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     private List<Review> reviews;
 
+    @OneToMany(mappedBy = "restaurant")
+    private List<RestaurantStays> restaurantStays;
+
     @ManyToOne
     @JoinColumn(name="city_id")
     private City city;
@@ -78,6 +87,18 @@ public class Restaurant {
         this.name = name;
         this.priceRange = priceRange;
         this.description = description;
+    }
+
+    public Restaurant(String name, double priceRange, String description, String avatar, String cover, double longitude, double latitude, City city, List<Cousine> cousines) {
+        this.name = name;
+        this.priceRange = priceRange;
+        this.description = description;
+        this.avatar = avatar;
+        this.cover = cover;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.city = city;
+        this.cousines = cousines;
     }
 
     public String getName() {
@@ -102,6 +123,46 @@ public class Restaurant {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public List<Cousine> getCousines() {
+        return cousines;
+    }
+
+    public void setCousines(List<Cousine> cousines) {
+        this.cousines = cousines;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

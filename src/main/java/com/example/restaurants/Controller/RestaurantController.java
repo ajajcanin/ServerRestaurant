@@ -52,9 +52,9 @@ public class RestaurantController {
     }
     @CrossOrigin
     @RequestMapping("/getExtraDetails")
-    public JsonNode getExtraDetails(@RequestBody Long id) throws IOException{
+    public Restaurant getExtraDetails(@RequestBody Long id) throws IOException{
 
-        JsonNode restaurants = restaurantDAO.getExtraDetails(id);
+        Restaurant restaurants = restaurantDAO.getExtraDetails(id);
 
         return restaurants;
     }

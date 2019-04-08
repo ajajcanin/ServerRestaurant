@@ -52,4 +52,13 @@ public class LocationController {
 
         return cities;
     }
+    @RequestMapping("/citiesPagination")
+    public JsonNode citiesPagination(@RequestBody String data) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode json = mapper.readTree(data);
+
+        JsonNode cities = locationDao.getCitiesPagination(json);
+
+        return cities;
+    }
 }

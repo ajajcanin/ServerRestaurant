@@ -14,5 +14,5 @@ public interface RestaurantDao {
     public List<Restaurant> getRestuarant(JsonNode json);
     public JsonNode getRandRestaurant ();
     public JsonNode getSearchedRestaurants(JsonNode json);
-    JsonNode getExtraDetails(Long id);
+    Restaurant getExtraDetails(Long id);
 }
