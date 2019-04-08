@@ -23,6 +23,7 @@ public class SecurityConstants {
     public static final String IS_ADMIN = "/app/isAdmin";
 
     //FFOR TESTING
+    public static final String MAKE_RESERVATION = "/app/makeReservation";
     public static final String CHECK_RESERVATION = "/app/checkReservationAvailability";
 
 
