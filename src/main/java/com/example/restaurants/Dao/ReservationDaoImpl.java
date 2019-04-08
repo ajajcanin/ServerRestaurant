@@ -123,9 +123,6 @@ public class ReservationDaoImpl implements ReservationDao {
         JsonNode tableNode;
         try {
             tableNode = mapper.readTree(String.valueOf(json)).get("tables");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         int guests = json.get("guests").asInt();
         String date = json.get("date").asText().substring(0,10);
@@ -133,7 +130,6 @@ public class ReservationDaoImpl implements ReservationDao {
 
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date parsedDate = null;
-        try {
             parsedDate = dateFromat.parse(date + ' ' + json.get("time").asText());
 
             Timestamp timestamp = new Timestamp(parsedDate.getTime());
@@ -186,7 +182,9 @@ public class ReservationDaoImpl implements ReservationDao {
 
         } catch (ParseException e) {
                     e.printStackTrace();
-                }
+                } catch (IOException e) {
+            e.printStackTrace();
+        }
         //query.setParameter("dateTime", people);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
