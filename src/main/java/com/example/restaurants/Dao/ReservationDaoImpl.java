@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -25,7 +26,6 @@ import static java.lang.Math.ceil;
 @Repository
 public class ReservationDaoImpl implements ReservationDao {
     private final EntityManager entityManager;
-
 
     public ReservationDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -64,20 +64,27 @@ public class ReservationDaoImpl implements ReservationDao {
                 List<Integer> tableCapacities = new ArrayList<>(freeTables.values());
 
                 Wrapper wrapper = new Wrapper(MIN_VALUE, tableCapacities, new ArrayList<>());
-                getTablesForReservation(tableIds, wrapper.getTablesCapacity(), new ArrayList<BigInteger>(), wrapper.getRet(),
-                        wrapper.getTablesCapacity().size(), guests, wrapper.getMin());
+                System.out.println("talbeids"+ tableIds);
+                System.out.println("capads"+ tableCapacities);
+
+                getTablesForReservation(tableIds, wrapper, wrapper.getTablesCapacity().size(), new ArrayList<BigInteger>(), guests);
                 Integer spaceTaken = 0;
                 for(BigInteger space : wrapper.getRet()){
                     spaceTaken += freeTables.get(space);
                 }
+                System.out.println(spaceTaken);
                 if(isSpaceAllowed(guests, spaceTaken)){
                     JsonNode tablesByTime = mapper.createObjectNode();
                     ArrayNode array = mapper.createArrayNode();
-                    wrapper.getRet().forEach(child -> {
-                        array.add(child);
-                    });
+                    for(BigInteger id : wrapper.getRet()){
+                        array.add(id);
+                    }
                     ((ObjectNode) tablesByTime).put("bestTime", tempTime.toString().substring(11,16));
+                    ((ObjectNode) tablesByTime).put("duration", lengthOfStay);
                     ((ObjectNode) tablesByTime).putPOJO("tableIds", array);
+                    array.forEach(child -> {
+                        System.out.println("------>"+child);
+                    });
                     reservations.add(tablesByTime);
                     if(timestamp == tempTime) break;
                     else if ( counter == 2) break;
@@ -85,7 +92,7 @@ public class ReservationDaoImpl implements ReservationDao {
                 }
                 IncreaseTimeByThirtyMinutes(tempTime);
                 int hours = Integer.parseInt(tempTime.toString().substring(11,13));
-                if(hours <= (23 - lengthOfStay)) break;
+                if(hours >= (23 - lengthOfStay)) break;
             }
             /*int tablesLeft = getNumTables(timestamp, bestTime, json.get("people").asInt(), json.get("idRestaurant").asLong(), true, false);
 
@@ -112,8 +119,18 @@ public class ReservationDaoImpl implements ReservationDao {
     @Transactional
     public ResponseEntity makeReservation(JsonNode json) {
 
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode tableNode;
+        try {
+            tableNode = mapper.readTree(String.valueOf(json)).get("tables");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         int guests = json.get("guests").asInt();
         String date = json.get("date").asText().substring(0,10);
+        int duration = json.get("duration").asInt();
+
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date parsedDate = null;
         try {
@@ -122,15 +139,14 @@ public class ReservationDaoImpl implements ReservationDao {
             Timestamp timestamp = new Timestamp(parsedDate.getTime());
             Calendar cal = Calendar.getInstance();
             cal.setTime(timestamp);
-            cal.add(Calendar.DAY_OF_WEEK, 1);
+            cal.add(Calendar.DAY_OF_WEEK, duration);
             timestamp.setTime(cal.getTime().getTime());
             cal.add(Calendar.HOUR, 1);
             Timestamp timestampTo = new Timestamp(cal.getTime().getTime());
 //sve slobodne stolove
-            String sql = "select t.table_id " +
+            String sql = "select count(t.table_id) " +
                 "from tables t " +
-                "where t.restaurant_id = :idRestaurant " +
-                "and t.capacity = :guests " +
+                "where t.table_id IN :tables "+
                 "and not exists(select r.reservation_id " +
                 "from reservations r " +
                 "where t.table_id = r.table_id " +
@@ -139,34 +155,40 @@ public class ReservationDaoImpl implements ReservationDao {
             Query query = entityManager.createNativeQuery(sql);
             query.setParameter("dateTime", timestamp);
             query.setParameter("guests", guests);
+            query.setParameter("tables", tableNode.toString());
             query.setParameter("idRestaurant", json.get("idRestaurant").asLong());
-            BigInteger tableId = (BigInteger)query.getSingleResult();
+            Integer tableId = (Integer)query.getSingleResult();
 
-            String sqlUser = "select u.user_id " +
-                    "from users u " +
-                    "where u.email_address like :userEmail";
-            Query queryUser = entityManager.createNativeQuery(sqlUser);
-            queryUser.setParameter("userEmail", json.get("user").asText());
-            BigInteger userId = (BigInteger)queryUser.getSingleResult();
+            if(tableId == tableNode.size()){
+                String sqlUser = "select u.user_id " +
+                        "from users u " +
+                        "where u.email_address like :userEmail";
+                Query queryUser = entityManager.createNativeQuery(sqlUser);
+                queryUser.setParameter("userEmail", json.get("user").asText());
+                BigInteger userId = (BigInteger)queryUser.getSingleResult();
 
 
-            String sqlInsert="insert into reservations(guests, time_from, time_to, table_id, user_id) values " +
-                    "(:guests, :timeFrom, :timeTo, :tableId, :userId) ";
+                String sqlInsert="insert into reservations(guests, time_from, time_to, table_id, user_id) values " +
+                        "(:guests, :timeFrom, :timeTo, :tableId, :userId) ";
 
-            Query queryInsert = entityManager.createNativeQuery(sqlInsert);
-            queryInsert.setParameter("userId", userId.longValue());
-            queryInsert.setParameter("tableId", tableId.longValue());
-            queryInsert.setParameter("guests", guests);
-            queryInsert.setParameter("timeFrom", timestamp);
-            queryInsert.setParameter("timeTo", timestampTo);
-            queryInsert.executeUpdate();
+                Query queryInsert = entityManager.createNativeQuery(sqlInsert);
+                queryInsert.setParameter("userId", userId.longValue());
+                queryInsert.setParameter("tableId", tableId.longValue());
+                queryInsert.setParameter("guests", guests);
+                queryInsert.setParameter("timeFrom", timestamp);
+                queryInsert.setParameter("timeTo", timestampTo);
+                queryInsert.executeUpdate();
+
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+
 
 
         } catch (ParseException e) {
                     e.printStackTrace();
                 }
         //query.setParameter("dateTime", people);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 
@@ -240,23 +262,25 @@ public class ReservationDaoImpl implements ReservationDao {
         timestamp.setTime(cal.getTime().getTime());
     }
 
-    private Integer getTablesForReservation(List<BigInteger> tableIds, List<Integer> tableCapacities,
-            List<BigInteger> curTables, List<BigInteger> ret,Integer n, int guests, int min){
+    private Integer getTablesForReservation(List<BigInteger> tableIds, Wrapper wrapper, Integer n,
+            List<BigInteger> curTables, int guests){
         if(n == 0 || guests == 0)
             return 0;
-        if(tableCapacities.get(n-1) >= guests){
-            if(guests - tableCapacities.get(n-1) > min){
-                min = guests - tableCapacities.get(n-1);
-                List<BigInteger> newTableIds = curTables;
+        if(wrapper.getTablesCapacity().get(n-1) >= guests){
+            if(guests - wrapper.getTablesCapacity().get(n-1) > wrapper.getMin()){
+                wrapper.setMin(guests - wrapper.getTablesCapacity().get(n-1));
+                List<BigInteger> newTableIds = new ArrayList<BigInteger>(curTables);
                 newTableIds.add(tableIds.get(n-1));
-                ret = newTableIds;
+                wrapper.setRet(newTableIds);
+                System.out.println("TEST" + wrapper.getRet());
             }
-            return getTablesForReservation(tableIds,tableCapacities, curTables, ret, n, guests, min);
+            return getTablesForReservation(tableIds,wrapper, n-1, curTables, guests);
         } else {
-            List<BigInteger> newTableIds = curTables;
+            List<BigInteger> newTableIds = new ArrayList<BigInteger>(curTables);
             newTableIds.add(tableIds.get(n-1));
-            return Math.max(tableCapacities.get(n-1) + getTablesForReservation(tableIds,tableCapacities, curTables, ret, n, guests, min),
-                    getTablesForReservation(tableIds,tableCapacities, curTables, ret, n, guests, min));
+
+            return Math.max(wrapper.getTablesCapacity().get(n-1) + getTablesForReservation(tableIds, wrapper, n-1, newTableIds, guests-wrapper.getTablesCapacity().get(n-1)),
+                    getTablesForReservation(tableIds,wrapper, n-1, curTables, guests));
         }
 
     }
@@ -277,7 +301,6 @@ public class ReservationDaoImpl implements ReservationDao {
         Timestamp timestampEnd = new Timestamp(cal.getTime().getTime());
 
         Query query = entityManager.createNativeQuery(sql);
-        query.setParameter("guests", guests);
         query.setParameter("dateTime", timestamp);
         query.setParameter("idRestaurant", idRestaurant);
         query.setParameter("dateTimeEnd", timestampEnd);
@@ -290,17 +313,17 @@ public class ReservationDaoImpl implements ReservationDao {
         return tables;
     }
     private Boolean isSpaceAllowed(int guests, int space){
-        return ceil(guests+guests*0.3) <= space && space > 0;
+        return ceil(guests+guests*0.3) >= space && space >= guests;
     }
     @Transactional
     public Integer getDurationOfStay(Timestamp timestamp, Long idRestaurant, int guests){
         String sqlStay = "select rs.stay " +
                 "from restaurant_stays rs " +
                 "where rs.restaurant_id = :idRestaurant " +
-                "and ms.start::time <= :dateTime::time " +
-                "and ms.end::time >= :dateTime::time " +
-                "and ms.guest = :guests) " +
-                "and :weekend = ms.weekend ";
+                "and cast(rs.time_from as time) <= :dateTime " +
+                "and cast(rs.time_to as time) >= :dateTime " +
+                "and rs.guest = :guests " +
+                "and :weekend = rs.weekend ";
 
         int stayDuration;
         Calendar cal = Calendar.getInstance();
@@ -311,7 +334,7 @@ public class ReservationDaoImpl implements ReservationDao {
             weekend = true;
         }
         Query queryStay = entityManager.createNativeQuery(sqlStay);
-        queryStay.setParameter("dateTime", timestamp);
+        queryStay.setParameter("dateTime", new Date(timestamp.getTime()));
         queryStay.setParameter("idRestaurant", idRestaurant);
         queryStay.setParameter("guests", guests);
         queryStay.setParameter("weekend", weekend);

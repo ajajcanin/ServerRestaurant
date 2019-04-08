@@ -22,6 +22,9 @@ public class SecurityConstants {
     public static final String COUNTERS = "/app/counters";
     public static final String IS_ADMIN = "/app/isAdmin";
 
+    //FFOR TESTING
+    public static final String CHECK_RESERVATION = "/app/checkReservationAvailability";
+
 
     public static final String ADD_RESTAURANT = "/app/addRestaurant";
     public static final String EDIT_RESTAURANT = "/app/editRestaurant";

@@ -6,16 +6,19 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="restaurant_stays")
-public class RestaurantStays {
+public class RestaurantStay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="stay_id", nullable=false)
     private long id;
 
-    @Column(name="start", nullable=false)
+    @Column(name="stay")
+    private int stay;
+
+    @Column(name="time_from", nullable=false)
     private Timestamp start;
 
-    @Column(name="end", nullable=false)
+    @Column(name="time_to", nullable=false)
     private Timestamp end;
 
     @Column(name="guest", nullable=false)
@@ -29,7 +32,7 @@ public class RestaurantStays {
     private Restaurant restaurant;
 
 
-    public RestaurantStays(Timestamp start, Timestamp end, int guest, boolean weekend, Restaurant restaurant) {
+    public RestaurantStay(Timestamp start, Timestamp end, int guest, boolean weekend, Restaurant restaurant) {
         this.start = start;
         this.end = end;
         this.guest = guest;
@@ -37,7 +40,7 @@ public class RestaurantStays {
         this.restaurant = restaurant;
     }
 
-    public RestaurantStays() {
+    public RestaurantStay() {
     }
 
     public long getId() {
