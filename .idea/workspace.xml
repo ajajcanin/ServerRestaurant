@@ -4,8 +4,6 @@
     <list default="true" id="c58d9db7-ec69-4bc3-9eae-e1feeea7b559" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReservationDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReservationDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/SecurityConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/restaurants/WebSecurity.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,15 +41,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReservationDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="317" column="48" selection-start-line="317" selection-start-column="48" selection-end-line="317" selection-end-column="48" />
+            <state relative-caret-position="357">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1050#1051#0" expanded="true" />
                 <element signature="e#1100#1101#0" expanded="true" />
                 <element signature="method#IncreaseTimeByThirtyMinutes#0;class#ReservationDaoImpl#0" />
                 <element signature="method#DecreaseTimeByThirtyMinutes#0;class#ReservationDaoImpl#0" />
-                <element signature="method#getDurationOfStay#0;class#ReservationDaoImpl#0" />
               </folding>
             </state>
           </provider>
@@ -113,7 +110,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1819">
+            <state relative-caret-position="473">
               <caret line="128" column="56" selection-start-line="128" selection-start-column="56" selection-end-line="128" selection-end-column="56" />
             </state>
           </provider>
@@ -178,6 +175,7 @@
       <find>hash</find>
       <find>hashma</find>
       <find>aregiven</find>
+      <find>DAY</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -348,7 +346,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554747846017" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554773380484" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -427,12 +425,12 @@
       <workItem from="1554138933938" duration="48321000" />
       <workItem from="1554407567725" duration="14631000" />
       <workItem from="1554455097744" duration="83563000" />
-      <workItem from="1554749305123" duration="6478000" />
+      <workItem from="1554749305123" duration="13487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="704903000" />
+    <option name="totallyTimeSpent" value="711912000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -458,7 +456,7 @@
       <window_info id="Persistence" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41935483" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33486944" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2611367" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -852,13 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1819">
-          <caret line="128" column="56" selection-start-line="128" selection-start-column="56" selection-end-line="128" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReviewDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -907,17 +898,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/RestaurantDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="128" column="56" selection-start-line="128" selection-start-column="56" selection-end-line="128" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/restaurants/Dao/ReservationDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="317" column="48" selection-start-line="317" selection-start-column="48" selection-end-line="317" selection-end-column="48" />
+        <state relative-caret-position="357">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1050#1051#0" expanded="true" />
             <element signature="e#1100#1101#0" expanded="true" />
             <element signature="method#IncreaseTimeByThirtyMinutes#0;class#ReservationDaoImpl#0" />
             <element signature="method#DecreaseTimeByThirtyMinutes#0;class#ReservationDaoImpl#0" />
-            <element signature="method#getDurationOfStay#0;class#ReservationDaoImpl#0" />
           </folding>
         </state>
       </provider>

@@ -49,7 +49,7 @@ public class ReservationDaoImpl implements ReservationDao {
             timestamp.setTime(cal.getTime().getTime());
             System.out.println(timestamp);
 
-            Timestamp tempTime = timestamp;
+            Timestamp tempTime = new Timestamp(cal.getTime().getTime());
             int counter = 0;
 
             ObjectMapper mapper = new ObjectMapper();
@@ -138,12 +138,10 @@ public class ReservationDaoImpl implements ReservationDao {
             parsedDate = dateFromat.parse(date + ' ' + json.get("time").asText());
 
             Timestamp timestamp = new Timestamp(parsedDate.getTime());
-            /*Calendar cal = Calendar.getInstance();
+            Calendar cal = Calendar.getInstance();
             cal.setTime(timestamp);
-            cal.add(Calendar.DAY_OF_WEEK, duration);
-            timestamp.setTime(cal.getTime().getTime());
-            cal.add(Calendar.HOUR, 2);
-            Timestamp timestampTo = new Timestamp(cal.getTime().getTime());*/
+            cal.add(Calendar.HOUR, duration);
+            Timestamp timestampTo = new Timestamp(cal.getTime().getTime());
 
             System.out.println(timestamp + "drugi" + timestamp);
             HashMap<BigInteger , Integer> freeTables = getFreeTablesInCertainTime(timestamp, duration, idRestaurant, 0);
@@ -171,7 +169,7 @@ public class ReservationDaoImpl implements ReservationDao {
                     queryInsert.setParameter("tableId", table.longValue());
                     queryInsert.setParameter("guests", guests);
                     queryInsert.setParameter("timeFrom", timestamp);
-                    queryInsert.setParameter("timeTo", timestamp);
+                    queryInsert.setParameter("timeTo", timestampTo);
                     queryInsert.executeUpdate();
                 }
 
@@ -309,6 +307,7 @@ public class ReservationDaoImpl implements ReservationDao {
         for(Object[] result : tableObjects){
             tables.put((BigInteger) result[0], (Integer) result[1]);
         }
+        System.out.println("free tables" + tables);
         return tables;
     }
     private Boolean isSpaceAllowed(int guests, int space){
