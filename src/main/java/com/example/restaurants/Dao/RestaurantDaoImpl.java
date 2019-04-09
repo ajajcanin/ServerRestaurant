@@ -116,7 +116,7 @@ public class RestaurantDaoImpl implements RestaurantDao {
         if(!json.get("date").asText().isEmpty()){
         SimpleDateFormat dateFromat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String date = json.get("date").asText().substring(0,10);
-            String hour = json.get("hour").asText().substring(11,16);
+            String hour = json.get("time").asText().substring(11,16);
             Date parsedDate = null;
             try {
                 parsedDate = dateFromat.parse(date + ' ' + hour);
@@ -233,13 +233,13 @@ public class RestaurantDaoImpl implements RestaurantDao {
         }
 
         Integer totalNumberOfRestaurants = 0;
-        List<Long> restaurantIds = queryCount.getResultList();
+        List<BigInteger> restaurantIds = queryCount.getResultList();
         if(json.get("guests").asText().isEmpty()){
            totalNumberOfRestaurants = restaurantIds.size();
         } else {
-            for (Long restaurantId : restaurantIds) {
-                int lengthOfStay = reservationDaoImpl.getDurationOfStay(timestamp, restaurantId, guests);
-                HashMap<BigInteger, Integer> freeTables = reservationDaoImpl.getFreeTablesInCertainTime(timestamp, lengthOfStay, restaurantId, guests);
+            for (BigInteger restaurantId : restaurantIds) {
+                int lengthOfStay = reservationDaoImpl.getDurationOfStay(timestamp, restaurantId.longValue(), guests);
+                HashMap<BigInteger, Integer> freeTables = reservationDaoImpl.getFreeTablesInCertainTime(timestamp, lengthOfStay, restaurantId.longValue(), guests);
                 List<BigInteger> tableIds = new ArrayList<>(freeTables.keySet());
                 List<Integer> tableCapacities = new ArrayList<>(freeTables.values());
 
@@ -281,8 +281,8 @@ public class RestaurantDaoImpl implements RestaurantDao {
                 ((ObjectNode) childNode).put("foodType", (String) child[7]);
                 array.add(childNode);
             } else {
-                int lengthOfStay = reservationDaoImpl.getDurationOfStay(timestamp, (Long) child[0], guests);
-                HashMap<BigInteger, Integer> freeTables = reservationDaoImpl.getFreeTablesInCertainTime(timestamp, lengthOfStay, (Long) child[0], guests);
+                int lengthOfStay = reservationDaoImpl.getDurationOfStay(timestamp, ((BigInteger) child[0]).longValue(), guests);
+                HashMap<BigInteger, Integer> freeTables = reservationDaoImpl.getFreeTablesInCertainTime(timestamp, lengthOfStay, ((BigInteger) child[0]).longValue(), guests);
                 List<BigInteger> tableIds = new ArrayList<>(freeTables.keySet());
                 List<Integer> tableCapacities = new ArrayList<>(freeTables.values());
 
