@@ -92,45 +92,47 @@ public class ReservationDaoImpl implements ReservationDao {
                 DecreaseTimeByThirtyMinutes(tempTime);
                 int hours = Integer.parseInt(tempTime.toString().substring(11,13));
                 if(hours < 8) break;
-            }
-            if(counter == 0)
-            while(true){
-                int lengthOfStay = getDurationOfStay(tempTime, idRestaurant, guests);
-                HashMap<BigInteger, Integer> freeTables = getFreeTablesInCertainTime(tempTime, lengthOfStay, idRestaurant, guests);
-                List<BigInteger> tableIds = new ArrayList<>(freeTables.keySet());
-                List<Integer> tableCapacities = new ArrayList<>(freeTables.values());
+            }if(counter != 0){
+                counter = 0;
+                while(true){
+                    int lengthOfStay = getDurationOfStay(tempTime, idRestaurant, guests);
+                    HashMap<BigInteger, Integer> freeTables = getFreeTablesInCertainTime(tempTime, lengthOfStay, idRestaurant, guests);
+                    List<BigInteger> tableIds = new ArrayList<>(freeTables.keySet());
+                    List<Integer> tableCapacities = new ArrayList<>(freeTables.values());
 
-                Wrapper wrapper = new Wrapper(MIN_VALUE, tableCapacities, new ArrayList<>());
-                System.out.println("talbeids"+ tableIds);
-                System.out.println("capads"+ tableCapacities);
+                    Wrapper wrapper = new Wrapper(MIN_VALUE, tableCapacities, new ArrayList<>());
+                    System.out.println("talbeids"+ tableIds);
+                    System.out.println("capads"+ tableCapacities);
 
-                getTablesForReservation(tableIds, wrapper, wrapper.getTablesCapacity().size(), new ArrayList<BigInteger>(), guests);
-                Integer spaceTaken = 0;
-                for(BigInteger space : wrapper.getRet()){
-                    spaceTaken += freeTables.get(space);
-                }
-                System.out.println(spaceTaken);
-                if(isSpaceAllowed(guests, spaceTaken)){
-                    JsonNode tablesByTime = mapper.createObjectNode();
-                    ArrayNode array = mapper.createArrayNode();
-                    for(BigInteger id : wrapper.getRet()){
-                        array.add(id);
+                    getTablesForReservation(tableIds, wrapper, wrapper.getTablesCapacity().size(), new ArrayList<BigInteger>(), guests);
+                    Integer spaceTaken = 0;
+                    for(BigInteger space : wrapper.getRet()){
+                        spaceTaken += freeTables.get(space);
                     }
-                    ((ObjectNode) tablesByTime).put("bestTime", tempTime.toString().substring(11,16));
-                    ((ObjectNode) tablesByTime).put("duration", lengthOfStay);
-                    ((ObjectNode) tablesByTime).putPOJO("tableIds", array);
-                    array.forEach(child -> {
-                        System.out.println("------>"+child);
-                    });
-                    reservations.add(tablesByTime);
-                    if(timestamp.getTime() == tempTime.getTime()) break;
-                    else if ( counter == 1) break;
-                    counter++;
+                    System.out.println(spaceTaken);
+                    if(isSpaceAllowed(guests, spaceTaken)){
+                        JsonNode tablesByTime = mapper.createObjectNode();
+                        ArrayNode array = mapper.createArrayNode();
+                        for(BigInteger id : wrapper.getRet()){
+                            array.add(id);
+                        }
+                        ((ObjectNode) tablesByTime).put("bestTime", tempTime.toString().substring(11,16));
+                        ((ObjectNode) tablesByTime).put("duration", lengthOfStay);
+                        ((ObjectNode) tablesByTime).putPOJO("tableIds", array);
+                        array.forEach(child -> {
+                            System.out.println("------>"+child);
+                        });
+                        reservations.add(tablesByTime);
+                        if(timestamp.getTime() == tempTime.getTime()) break;
+                        else if ( counter == 1) break;
+                        counter++;
+                    }
+                    IncreaseTimeByThirtyMinutes(tempTime);
+                    int hours = Integer.parseInt(tempTime.toString().substring(11,13));
+                    if(hours >= (23 - lengthOfStay)) break;
                 }
-                IncreaseTimeByThirtyMinutes(tempTime);
-                int hours = Integer.parseInt(tempTime.toString().substring(11,13));
-                if(hours >= (23 - lengthOfStay)) break;
             }
+
             /*int tablesLeft = getNumTables(timestamp, bestTime, json.get("people").asInt(), json.get("idRestaurant").asLong(), true, false);
 
             ArrayNode array = mapper.createArrayNode();
