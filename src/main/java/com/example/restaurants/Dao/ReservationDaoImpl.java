@@ -56,7 +56,44 @@ public class ReservationDaoImpl implements ReservationDao {
             JsonNode res = mapper.createObjectNode();
             ((ObjectNode) res).put("idRestaurant", idRestaurant);
             ArrayNode reservations = mapper.createArrayNode();
+            while(true){
+                int lengthOfStay = getDurationOfStay(tempTime, idRestaurant, guests);
+                HashMap<BigInteger, Integer> freeTables = getFreeTablesInCertainTime(tempTime, lengthOfStay, idRestaurant, guests);
+                List<BigInteger> tableIds = new ArrayList<>(freeTables.keySet());
+                List<Integer> tableCapacities = new ArrayList<>(freeTables.values());
 
+                Wrapper wrapper = new Wrapper(MIN_VALUE, tableCapacities, new ArrayList<>());
+                System.out.println("talbeids"+ tableIds);
+                System.out.println("capads"+ tableCapacities);
+
+                getTablesForReservation(tableIds, wrapper, wrapper.getTablesCapacity().size(), new ArrayList<BigInteger>(), guests);
+                Integer spaceTaken = 0;
+                for(BigInteger space : wrapper.getRet()){
+                    spaceTaken += freeTables.get(space);
+                }
+                System.out.println(spaceTaken);
+                if(isSpaceAllowed(guests, spaceTaken)){
+                    JsonNode tablesByTime = mapper.createObjectNode();
+                    ArrayNode array = mapper.createArrayNode();
+                    for(BigInteger id : wrapper.getRet()){
+                        array.add(id);
+                    }
+                    ((ObjectNode) tablesByTime).put("bestTime", tempTime.toString().substring(11,16));
+                    ((ObjectNode) tablesByTime).put("duration", lengthOfStay);
+                    ((ObjectNode) tablesByTime).putPOJO("tableIds", array);
+                    array.forEach(child -> {
+                        System.out.println("------>"+child);
+                    });
+                    reservations.insert(0, tablesByTime);
+                    if(timestamp.getTime() == tempTime.getTime()) break;
+                    else if ( counter == 1) break;
+                    counter++;
+                }
+                DecreaseTimeByThirtyMinutes(tempTime);
+                int hours = Integer.parseInt(tempTime.toString().substring(11,13));
+                if(hours < 8) break;
+            }
+            if(counter == 0)
             while(true){
                 int lengthOfStay = getDurationOfStay(tempTime, idRestaurant, guests);
                 HashMap<BigInteger, Integer> freeTables = getFreeTablesInCertainTime(tempTime, lengthOfStay, idRestaurant, guests);
@@ -87,7 +124,7 @@ public class ReservationDaoImpl implements ReservationDao {
                     });
                     reservations.add(tablesByTime);
                     if(timestamp.getTime() == tempTime.getTime()) break;
-                    else if ( counter == 2) break;
+                    else if ( counter == 1) break;
                     counter++;
                 }
                 IncreaseTimeByThirtyMinutes(tempTime);
