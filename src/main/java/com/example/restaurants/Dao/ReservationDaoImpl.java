@@ -259,7 +259,7 @@ public class ReservationDaoImpl implements ReservationDao {
         timestamp.setTime(cal.getTime().getTime());
     }
 
-    private Integer getTablesForReservation(List<BigInteger> tableIds, Wrapper wrapper, Integer n,
+    public Integer getTablesForReservation(List<BigInteger> tableIds, Wrapper wrapper, Integer n,
             List<BigInteger> curTables, int guests){
         if(n == 0 || guests == 0)
             return 0;
@@ -310,10 +310,10 @@ public class ReservationDaoImpl implements ReservationDao {
         System.out.println("free tables" + tables);
         return tables;
     }
-    private Boolean isSpaceAllowed(int guests, int space){
+    public Boolean isSpaceAllowed(int guests, int space){
         return ceil(guests+guests*0.3) >= space && space >= guests;
     }
-    private Boolean areGivenTablesFree(List<BigInteger> allFree, List<BigInteger> givenTables){
+    public Boolean areGivenTablesFree(List<BigInteger> allFree, List<BigInteger> givenTables){
         return allFree.containsAll(givenTables);
     }
     @Transactional
