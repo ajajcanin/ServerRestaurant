@@ -86,7 +86,7 @@ public class ReservationDaoImpl implements ReservationDao {
                         System.out.println("------>"+child);
                     });
                     reservations.add(tablesByTime);
-                    if(timestamp == tempTime) break;
+                    if(timestamp.getTime() == tempTime.getTime()) break;
                     else if ( counter == 2) break;
                     counter++;
                 }
@@ -139,6 +139,10 @@ public class ReservationDaoImpl implements ReservationDao {
 
             Timestamp timestamp = new Timestamp(parsedDate.getTime());
             Calendar cal = Calendar.getInstance();
+            cal.setTime(timestamp);
+            cal.add(Calendar.HOUR, 2);
+            timestamp.setTime(cal.getTime().getTime());
+            System.out.println(timestamp);
             cal.setTime(timestamp);
             cal.add(Calendar.HOUR, duration);
             Timestamp timestampTo = new Timestamp(cal.getTime().getTime());
