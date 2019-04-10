@@ -55,13 +55,14 @@ public class UserDaoImpl implements UserDao {
         String sqlCount = "select count(distinct u.user_id) " +
                 "from users u "+
                 "where u.first_name like :name " +
-                "or u.last_name like :name ";
+                "or u.email_address like :name ";
 
 
-        String sql = "select u.user_id, u.first_name, u.last_name, u.email_address, u.phone_num, u.user_type, u.city_id  "+
-                "from users u "+
-                "where u.first_name like :name " +
-                "or u.last_name like :name ";
+        String sql = "select u.user_id, u.first_name, u.last_name, u.email_address, u.phone_num, u.user_type, u.city_id, cou.country_id  "+
+                "from users u, cities c, countries cou " +
+                "where (u.first_name like :name " +
+                "or u.email_address like :name )" +
+                "and u.city_id = c.city_id and c.country_id = cou.country_id ";
 
         Query theQuery = entityManager.createNativeQuery(sql);
         Query queryCount = entityManager.createNativeQuery(sqlCount);
@@ -85,6 +86,7 @@ public class UserDaoImpl implements UserDao {
             ((ObjectNode) childNode).put("phone", (String) child[4]);
             ((ObjectNode) childNode).put("type", (String) child[5]);
             ((ObjectNode) childNode).put("cityId", (BigInteger) child[6]);
+            ((ObjectNode) childNode).put("countryId", (BigInteger) child[6]);
             array.add(childNode);
         });
         JsonNode res = mapper.createObjectNode();

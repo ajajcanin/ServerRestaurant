@@ -6,5 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AdminCousine extends CrudRepository<Cousine, Long> {
     Cousine findCousineById(Long id);
+    Cousine findCousineByName(String name);
     boolean existsByName(String name);
 }
