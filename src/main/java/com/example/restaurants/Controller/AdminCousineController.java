@@ -30,10 +30,10 @@ public class AdminCousineController {
 
     @CrossOrigin
     @RequestMapping("/editCategory")
-    public ResponseEntity editCousine(@RequestBody String cousine) throws IOException {
-        if(!adminCousine.existsByName(cousine)){
-            Cousine oldCousine = adminCousine.findCousineByName(cousine);
-            oldCousine.setName(cousine);
+    public ResponseEntity editCousine(@RequestBody Cousine cousine) throws IOException {
+        if(!adminCousine.existsByName(cousine.getName())){
+            Cousine oldCousine = adminCousine.findCousineById(cousine.getId());
+            oldCousine.setName(cousine.getName());
             adminCousine.save(oldCousine);
             return ResponseEntity.status(200).body(null);
         }
